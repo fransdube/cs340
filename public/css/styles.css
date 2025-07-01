@@ -1,6 +1,367 @@
-/******* Change Box Model ***************/
-*,
-*:before,
-*:after {
+/* Basic Reset & Body Styling */
+* {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  background-color: #fff; /* Fallback if image fails to load */
+  background-image: url("/images/site/small_check.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #343a40; /* Consistent lowercase hex */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0; /* Remove default body margin */
+}
+
+main {
+  flex: 1 0 auto; /* Shorthand for flex-grow, flex-shrink, flex-basis */
+  background-color: #fff;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* remove extra space below images */
+}
+
+a {
+  color: #3E92CC;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header Styling */
+header {
+  background-color: #FFFFFF;
+  padding: 1rem 2rem; /* More padding for header */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #0A2463; /* Accent border */
+}
+
+.site-name {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #0A2463;
+}
+
+.account-link a {
+  color: #0A2463;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #0A2463;
+  border-radius: 5px;
+}
+.account-link a:hover {
+  background-color: #0A2463;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+/* Navigation Styling */
+nav {
+  background-color: #0A2463;
+  padding: 0.5rem 0;
+  width: 100%; /* Ensure nav takes full width */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on very small screens if needed */
+  justify-content: space-around;
+  padding: 0 1rem;
+}
+
+nav ul li a {
+  color: #FFFFFF;
+  font-weight: bold;
+  padding: 0.75rem 1rem; /* Slightly more padding */
+  display: block;
+  text-align: center;
+}
+
+nav ul li a:hover {
+  background-color: #3E92CC;
+  text-decoration: none;
+  border-radius: 4px; /* Rounded hover effect */
+}
+
+/* Main Content Heading */
+main > h1 { /* Welcome message */
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #0A2463;
+  font-size: 2rem;
+}
+
+/* Hero Section Styling */
+.hero {
+  display: grid; /* Use grid for hero layout */
+  grid-template-columns: 1fr; /* Single column by default */
+  align-items: center; /* Center items if they don't fill height */
+  margin-bottom: 2rem;
+  background-color: #e0e0e0; /* Placeholder background for the hero section itself */
+  position: relative; /* For absolute positioning of hero-content if needed */
+}
+
+.hero-image {
+  width: 100%;
+  grid-row: 1 / 2; /* Image is in the first row */
+  grid-column: 1 / 2; /* Image is in the first col */
+  object-fit: cover; /* Cover the area */
+  max-height: 400px; /* Max height for hero image */
+}
+
+.hero-content {
+  background-color: rgba(0, 0, 0, 0.5); /* Darker, semi-transparent overlay for better text contrast */
+  color: #FFFFFF;
+  padding: 1.5rem;
+  text-align: left; /* Text aligned left as in mockup */
+  grid-row: 1 / 2; /* Overlay is in the same cell as image */
+  grid-column: 1 / 2; /* Overlay is in the same cell */
+  align-self: center; /* Vertically center content in the grid cell */
+  margin: 1rem; /* Margin around the content box */
+  border-radius: 5px;
+  max-width: 300px; /* Limit width of the text box */
+}
+
+.hero-content h2 {
+  color: #FFFFFF; /* White text for heading on dark overlay */
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.hero-content ul {
+  list-style: none;
+  margin-bottom: 1.25rem;
+  padding-left: 0;
+}
+
+.hero-content ul li {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.cta-button {
+  background-color: #3E92CC;
+  color: #FFFFFF;
+  padding: 0.8rem 1.6rem;
+  border-radius: 5px;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+  font-size: 1.1rem;
+  border: none;
+}
+
+.cta-button:hover {
+  background-color: #2C7BAA; /* Slightly darker blue on hover */
+  text-decoration: none;
+}
+
+/* Upgrades and Reviews Sections General */
+.features-reviews-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.upgrades, .reviews {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #FFFFFF;
+  border: 1px solid #DEE2E6;
+  border-radius: 8px;
+}
+
+.upgrades h2, .reviews h2 {
+  color: #0A2463;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  text-align: center; /* Center by default, will change for large screens */
+  border-bottom: 1px solid #EEE;
+  padding-bottom: 0.5rem;
+}
+
+/* Upgrades Grid - Mobile (2 columns) */
+.upgrades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive grid */
+  gap: 1rem;
+  text-align: center;
+}
+
+.upgrade-item {
+  background-color: #F8F9FA; /* Light background for items */
+  padding: 1rem;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+}
+
+.upgrade-item img {
+  border: 1px solid #DEE2E6;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain; /* Use contain to see whole image */
+}
+
+.upgrade-item a {
+  font-weight: bold;
+  display: block; /* Make link take full width for easier click */
+  margin-top: 0.5rem;
+}
+
+/* Reviews List - Mobile */
+.reviews ul {
+  list-style: none; /* Remove default bullets */
+  padding-left: 0;
+}
+
+.reviews ul li {
+  margin-bottom: 1rem;
+  font-style: italic;
+  padding: 0.75rem;
+  background-color: #F8F9FA;
+  border-left: 4px solid #3E92CC; /* Accent border for reviews */
+  border-radius: 4px;
+}
+
+/* Footer Styling */
+footer {
+  background-color: #0A2463;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 1.5rem; /* More padding for footer */
+  margin-top: auto;
+}
+
+/* Media Query for Mobile Order (Reviews First) */
+@media screen and (max-width: 767px) {
+  .features-reviews-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .reviews {
+    order: 1; /* Reviews first on mobile */
+  }
+  .upgrades {
+    order: 2; /* Upgrades second on mobile */
+  }
+  .hero-content { /* Adjust hero content for smaller screens */
+    position: static; /* Make it part of normal flow */
+    grid-row: auto;
+    grid-column: auto;
+    background-color: rgba(0,0,0,0.6); /* Ensure contrast if image is light */
+    color: #fff;
+    margin: 0; /* Remove margin to use padding */
+    border-radius: 0; /* No radius if it's full width */
+    max-width: 100%;
+    text-align: center;
+  }
+  .hero-content h2 {
+    font-size: 1.5rem;
+  }
+   .hero-image {
+    max-height: 250px; /* Adjust hero image height on mobile */
+  }
+}
+
+
+/* Media Query for Larger Screens (e.g., tablets and desktops) */
+@media screen and (min-width: 768px) {
+  main {
+    padding: 2rem;
+  }
+
+  nav ul {
+    justify-content: center;
+    flex-wrap: nowrap; /* Prevent wrapping on larger screens */
+  }
+
+  nav ul li a {
+    padding: 0.75rem 1.5rem;
+  }
+
+  main > h1 {
+    font-size: 2.8rem; /* Larger welcome message */
+  }
+
+  .hero {
+    /* Grid layout for hero image and content side-by-side or sophisticated overlay */
+    /* The mobile-first approach with overlay on image might be good enough */
+    /* Or, you could do display: flex; here */
+     max-height: 450px;
+  }
+
+  .hero-image {
+    object-fit: cover; /* Ensure it covers the area */
+    height: 100%; /* Make image fill the hero section height */
+  }
+
+  .hero-content {
+    position: absolute; /* Take it out of flow for precise positioning */
+    top: 50%;
+    left: 5%; /* Position from left */
+    transform: translateY(-50%); /* Center vertically */
+    background-color: rgba(0, 0, 0, 0.6); /* Ensure good contrast */
+    color: #FFFFFF;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 35%; /* Max width for the content box */
+    z-index: 10; /* Ensure it's above the image */
+  }
+
+  .hero-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .hero-content ul li {
+    font-size: 1.1rem;
+  }
+
+  .features-reviews-wrapper {
+    display: grid; /* Use grid for desktop layout */
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 2rem;
+    align-items: start; /* Align items to the start of their grid area */
+  }
+
+  .upgrades {
+    order: 1; /* Upgrades on the left (default order in HTML) */
+  }
+
+  .reviews {
+    order: 2; /* Reviews on the right */
+  }
+
+  .upgrades h2, .reviews h2 {
+    text-align: left; /* Align section headers to the left */
+    font-size: 1.8rem;
+  }
+
+  .upgrades-grid {
+    /* Could change to 2x2 explicitly if auto-fit isn't desired */
+     grid-template-columns: repeat(2, 1fr);
+  }
 }
