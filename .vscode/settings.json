@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "pgOptions": {
+                "ssl": {
+                    "rejectUnauthorized": true
+                }
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "PostgreSQL",
+            "name": "cse340 Database",
+            "database": "cse340_ehyr",
+            "username": "cse340",
+            "password": "4yRwH6fo57mC09MJR2am1hwxmGG6js6n",
+            "connectString": "postgresql://cse340:4yRwH6fo57mC09MJR2am1hwxmGG6js6n@dpg-d1hq6kruibrs73fnjq0g-a.singapore-postgres.render.com/cse340_ehyr"
+        }
+    ]
+}
