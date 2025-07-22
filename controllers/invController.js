@@ -78,4 +78,22 @@ invCont.buildByClassificationId = async function (req, res, next) {
   }
 };
 
+invCont.buildByInventoryId = async function (req, res, next) {
+  try {
+    const inventory_id = req.params.inventoryId;
+    const data = await invModel.getInventoryByInventoryId(inventory_id);
+    const grid = await utilities.buildInventoryGrid(data);
+    let nav = await utilities.getNav();
+    const className = data[0].inv_make + " " + data[0].inv_model;
+    res.render("./inventory/detail", {
+      title: className,
+      nav,
+      grid,
+    });
+  } catch (error) {
+    console.error('Controller Error:', error);
+    next(error);
+  }
+};
+
 module.exports = invCont;
