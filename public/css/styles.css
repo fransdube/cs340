@@ -365,3 +365,77 @@ footer {
      grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.login-form {
+  background-color: #4a5568;
+  color: white;
+}
+
+.register-form {
+  background-color: white;
+  border: 1px solid #000;
+}
+
+form label {
+  font-weight: bold;
+  margin-bottom: -0.5rem;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #000;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  background-color: #e2e8f0;
+}
+
+form button {
+  padding: 0.8rem;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-form button {
+  background-color: #cbd5e0;
+  color: #000;
+}
+
+.register-form button {
+  background-color: #3b82f6;
+}
+
+form button:hover {
+  opacity: 0.8;
+}
+
+.notice {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 1rem;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  list-style: none;
+}
